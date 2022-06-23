@@ -15,7 +15,8 @@
 
 .App {
   position: relative;
-  display: block;
+  display: grid;
+  grid-gap: 0.5em;
   margin: auto auto;
   isolation: isolate;
   background-color: var(--accent-dark);
