@@ -1,0 +1,19 @@
+.form-container {
+  display: grid;
+  place-items: center;
+}
+
+form {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2px;
+}
+
+input {
+  padding: 0.5em 0.2em;
+  border-radius: 3px;
+  border: 1px solid black;
+  transition: all 250ms linear;
+}
