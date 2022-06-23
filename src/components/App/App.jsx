@@ -10,7 +10,6 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.getSymbols = this.getSymbols.bind(this);
-    this.getSymbols()
     this.state = {
       symbols: [],
       baseSymbol: "",
@@ -22,10 +21,21 @@ export default class App extends Component {
   }
 
   getSymbols() {
+    const allSymbols = [];
+    GetAPI.getSymbols().then(symbols => {
+      symbols.map( symbol => {
+        allSymbols.push(symbol[1]);
+      });
+      this.setState( {symbols: allSymbols} );
+    });
   }
 
   handleChange(event) {
     return;
+  }
+
+  componentDidMount() {
+    this.getSymbols();
   }
 
 

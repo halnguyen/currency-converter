@@ -7,7 +7,7 @@ const GetAPI = {
     // Return a promise
     const symbolsRaw = await fetch(GetAPI.url + "symbols");
     const symbols = await symbolsRaw.json();
-    return symbols.symbols;
+    return await Object.entries(symbols.symbols);
   },
   async getRate(fromSymbol, toSymbol) {
     // Fetching rates from base and target symbols
@@ -19,9 +19,4 @@ const GetAPI = {
 
 
 // GetAPI.getRate('USD', 'CAD').then(resp => console.log(resp));
-GetAPI.getSymbols().then(response => {
-  console.log(Object.keys(response));
-  console.log(response);
-} );
-
 export default GetAPI;

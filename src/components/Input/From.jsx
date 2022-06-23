@@ -17,11 +17,14 @@ export default class From extends React.Component {
 						type="text"
 						list="currency-selector" />
 					<datalist id="currency-selector" >
-						{this.props.symbols.map( symbol => {
-							return (
-								<option key={symbol} value={symbol.code}>{symbol.code}{symbol.description}</option>
-							);
-						} )}
+						{
+							// Generating symbols
+							this.props.symbols.map(symbol => {
+								return (
+									<option key={symbol.code} value={symbol.code}>{symbol.description}</option>
+								);
+							})
+						}
 					</datalist>
 
 				</form>

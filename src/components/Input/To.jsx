@@ -17,7 +17,14 @@ export default class To extends Component {
 						type="text"
 						list="currency-selector" />
 					<datalist id="currency-selector" >
-						<option value="USD">US Dollar (USD)</option>
+						{
+							// Generating symbols
+							this.props.symbols.map(symbol => {
+								return (
+									<option key={symbol.code} value={symbol.code}>{symbol.description}</option>
+								);
+							})
+						}
 					</datalist>
 
 				</form>
