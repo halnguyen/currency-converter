@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './App.css';
-import UserInput from '../UserInput/userInput.jsx';
+import CurrencyInput from '../CurrencyInput/currencyInput.jsx';
 
 export default class App extends Component {
 
@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <UserInput />
+        <CurrencyInput />
       </div>
     );
   }

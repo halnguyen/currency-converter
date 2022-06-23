@@ -1,0 +1,56 @@
+.form-container {
+  display: grid;
+  place-items: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr;
+  grid-gap: 1em;
+}
+
+.currency-container {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 60px;
+  border: none;
+  border-bottom: 1px solid black;
+
+}
+
+.currencyFrom {
+  justify-self: end;
+}
+
+.currencyTo {
+  justify-self: start;
+}
+
+.currency-container {
+  width: 100%;
+}
+
+label {
+  margin-right: 5px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background: none;
+  font-size: 1em;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  width: 1.2em;
+  height: 1.2em;
+  /* padding: 4px; */
+}
+
+button:hover {
+  background-color: hsl( 0 0% 100% / 0.5 );
+}
