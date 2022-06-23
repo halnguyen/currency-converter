@@ -6,29 +6,29 @@ export default class From extends React.Component {
 		return (
 			<div className="form-container">
 				<form action="/index.html">
-
 					<input
 						type="number"
 						defaultValue={this.props.baseAmount}
 						id="from-amount" />
-					<input
+					<select
 						onChange={this.props.onChange}
-						id="from"
-						type="text"
-						list="currency-selector" />
-					<datalist id="currency-selector" >
+						id="base"
+						name="base-currency"
+						onChange={this.props.onChange} >
 						{
 							// Generating symbols
 							this.props.symbols.map(symbol => {
 								return (
-									<option key={symbol.code} value={symbol.code}>{symbol.description}</option>
+									<option
+										key={symbol.code}
+										value={symbol.code}>
+										{symbol.code}: {symbol.description}
+									</option>
 								);
 							})
 						}
-					</datalist>
-
+					</select>
 				</form>
-
 			</div>
 		);
 	}

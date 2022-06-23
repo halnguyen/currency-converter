@@ -11,21 +11,24 @@ export default class To extends Component {
 					<input
 						type="number"
 						defaultValue={this.props.toAmount}/>
-					<input
+					<select
 						onChange={this.props.onChange}
-						id="to"
-						type="text"
-						list="currency-selector" />
-					<datalist id="currency-selector" >
+						id="target"
+						name="target-currency"
+						onChange={this.props.onChange} >
 						{
 							// Generating symbols
 							this.props.symbols.map(symbol => {
 								return (
-									<option key={symbol.code} value={symbol.code}>{symbol.description}</option>
+									<option
+										key={symbol.code}
+										value={symbol.code}>
+										{symbol.code}: {symbol.description}
+									</option>
 								);
 							})
 						}
-					</datalist>
+					</select>
 
 				</form>
 

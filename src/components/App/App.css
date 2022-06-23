@@ -27,6 +27,7 @@
   font-family: "Poppins", Helvetica, sans-serif, monospace;
   font-weight: 300;
   font-size: 1.2em;
+  max-width: 500px;
 }
 
 .App::before,

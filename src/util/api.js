@@ -2,21 +2,33 @@
 
 const GetAPI = {
   url: "https://api.exchangerate.host/",
+
   async getSymbols() {
     // Fetching all supported symbols
     // Return a promise
     const symbolsRaw = await fetch(GetAPI.url + "symbols");
-    const symbols = await symbolsRaw.json();
-    return await Object.entries(symbols.symbols);
+    try {
+      const symbols = await symbolsRaw.json();
+      return await Object.entries(symbols.symbols);
+    } catch(error) {
+      console.log(error);
+    }
   },
-  async getRate(fromSymbol, toSymbol) {
+
+  async getRate(baseSymbol, targetSymbol) {
     // Fetching rates from base and target symbols
     // Returns a promise
-    const rate= await fetch(GetAPI.url + `latest?base=${fromSymbol}&symbols=${toSymbol}`);
-    return await rate.json();
+    const response = await fetch(GetAPI.url + `latest?base=${baseSymbol}&symbols=${targetSymbol}`);
+    try {
+      const rateJSON = await response.json();
+      const rate = await Object.values(rateJSON.rates);
+      return await rate[0];
+    } catch(error) {
+      console.log(error);
+    }
   }
 };
 
 
-// GetAPI.getRate('USD', 'CAD').then(resp => console.log(resp));
+GetAPI.getRate('USD', 'CAD').then(resp => console.log(resp));
 export default GetAPI;

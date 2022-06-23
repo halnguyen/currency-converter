@@ -10,12 +10,15 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.getSymbols = this.getSymbols.bind(this);
+    this.getRate = this.getRate.bind(this);
+    this.handleChangeBase = this.handleChangeBase.bind(this);
+    this.handleChangeTarget = this.handleChangeTarget.bind(this);
     this.state = {
       symbols: [],
       baseSymbol: "",
       baseAmount: 0.00,
-      toSymbol: "",
-      toAmount: 0.00,
+      targetSymbol: "",
+      targetAmount: 0.00,
       rate: undefined
     };
   }
@@ -30,8 +33,23 @@ export default class App extends Component {
     });
   }
 
-  handleChange(event) {
-    return;
+  getRate(baseSymbol, targetSymbol) {
+    GetAPI.getRate(baseSymbol, targetSymbol).then(rateResponse => {
+      this.setState( {rate: rateResponse} );
+      console.log(this.state.rate);
+    })
+  }
+
+  handleChangeBase(event) {
+    const code = event.target.value;
+    this.setState( {baseSymbol: code} );
+    console.log(this.state.baseSymbol);
+  }
+
+  handleChangeTarget(event) {
+    const code = event.target.value;
+    this.setState( {targetSymbol: code} );
+    console.log(this.state.targetSymbol);
   }
 
   componentDidMount() {
@@ -44,10 +62,12 @@ export default class App extends Component {
       <div className="App">
         <h1>Currency Converter</h1>
         <From
+          onChange={this.handleChangeBase}
           baseAmount={this.state.baseAmount}
           baseSymbol={this.state.baseSymbol}
           symbols={this.state.symbols} />
         <To
+          onChange={this.handleChangeTarget}
           toAmount={this.state.toAmount}
           toSymbol={this.state.baseSymbol}
           symbols={this.state.symbols} />
