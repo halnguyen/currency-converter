@@ -1,7 +1,26 @@
+:root {
+  --background: #25404e;
+  --accent-dark: #355070;
+  --accent-light: #eaac8b;
+  --foreground: #f2f2f2;
+}
+
+#root {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background);
+}
+
 .App {
+  position: relative;
   display: block;
   margin: auto auto;
-  background-color: white;
+  isolation: isolate;
+  background-color: var(--accent-dark);
+  color: var(--accent-light);
+  border: 1px solid var(--accent-light);
   border-radius: 5px;
   padding: 2em;
   font-family: "Poppins", Helvetica, sans-serif, monospace;
@@ -9,9 +28,32 @@
   font-size: 1.2em;
 }
 
+.App::before,
+.App::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transition: all 350ms ease-out;
+  z-index: -1;
+}
+
+.App:hover::before {
+  box-shadow: 0 0 10px var(--accent-light);
+  filter: blur(10px);
+}
+
+.App:hover::after{
+  box-shadow: 0 0 20px var(--accent-dark);
+  filter: blur(20px);
+}
+
 .App h1 {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   font-size: 1.5em;
   font-weight: 400;
 }

@@ -18,10 +18,3 @@ code {
   margin: 0;
 }
 
-#root {
-  display: grid;
-  place-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: hsl(219 40% 14%);
-}

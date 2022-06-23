@@ -8,12 +8,30 @@ form {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 2px;
+  grid-gap: 1em;
 }
 
 input {
   padding: 0.5em 0.2em;
+  height: 3em;
   border-radius: 3px;
   border: 1px solid black;
   transition: all 250ms linear;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid blue;
+}
+
+/* Removing spinbox */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
