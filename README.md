@@ -10,3 +10,5 @@ Objectives:
 		Familiarize with React design patterns
 	</li>
 </ul>
+
+View this project on <a href="https://codesandbox.io/s/currency-converter-glpqnh">CodeSandBox</a>.
