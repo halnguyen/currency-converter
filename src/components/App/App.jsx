@@ -32,9 +32,9 @@ export default class App extends Component {
   getSymbols() {
     const allSymbols = [];
     GetAPI.getSymbols().then(symbols => {
-      symbols.map( symbol => {
-        allSymbols.push(symbol[1]);
-      })
+      for (let symbol of symbols) {
+        allSymbols.push(symbol);
+      }
       this.setState( {symbols: allSymbols} );
     })
     .catch(error => console.log(error));
