@@ -6,21 +6,24 @@
 form {
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 2fr; */
+  /* grid-gap: 0.5em; */
 }
 
 input {
   padding: 0.5em 0.2em;
+  margin: 0 1ch;
   height: 3em;
   border-radius: 3px;
   border: 1px solid var(--accent-light);
   color: white;
-  background-color: var(--background);
+  background-color: inherit;
   transition: all 250ms linear;
   outline: none;
-  
+  color: var(--accent-light);
 }
 
 /* Removing spinbox */
@@ -33,6 +36,11 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+  width: 15ch;
+}
+
+input[type=number]:focus {
+  background-color: var(--background);
 }
 
 input:disabled {
@@ -44,7 +52,7 @@ select {
   outline: none;
   border-radius: 3px;
   border: 1px solid var(--accent-light);
-  background-color: var(--background);
-  color: white;
-  width: 100%;
+  background-color: inherit;
+  color: var(--accent-light);
+  width: 30ch;
 }

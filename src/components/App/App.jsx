@@ -24,7 +24,7 @@ export default class App extends Component {
       targetSymbol: "USD",
       targetAmount: 0.00,
       rate: undefined,
-      isDisabled: false // may not need it later 
+      isDisabled: false 
     };
   }
 
@@ -52,6 +52,7 @@ export default class App extends Component {
     GetAPI.getRate(newBase, target).then(response => {
       this.setState({
         baseSymbol: newBase,
+        targetAmount: this.state.baseAmount * response,
         rate: response,
         isDisabled: false
       });
@@ -68,6 +69,7 @@ export default class App extends Component {
     GetAPI.getRate(base, newTarget).then(response => {
       this.setState({
         targetSymbol: newTarget,
+        baseAmount: this.state.targetAmount / response,
         rate: response,
         isDisabled: false
       });
@@ -78,6 +80,10 @@ export default class App extends Component {
     let baseCurrency = Number(event.target.value);
     // Calculation
     let targetCurrency = baseCurrency * this.state.rate;
+    // Display 2 decimal places if the calculated value is greater than 0.009
+    if (targetCurrency > 0.009) {
+      targetCurrency = targetCurrency.toFixed(2);
+    }
     this.setState( {baseAmount: baseCurrency, targetAmount: targetCurrency} );
 
   }
@@ -86,6 +92,10 @@ export default class App extends Component {
     let targetCurrency = Number(event.target.value);
     // Calculation
     let baseCurrency = targetCurrency / this.state.rate;
+    // Display 2 decimal places if the calculated value is greater than 0.009
+    if (baseCurrency > 0.009 ) {
+      baseCurrency = baseCurrency.toFixed(2);
+    }
     this.setState( {baseAmount: baseCurrency, targetAmount: targetCurrency} );
   }
 
@@ -93,6 +103,12 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getSymbols();
+    this.setState(
+      {
+        baseSymbol: "CAD",
+        targetSymbol: "USD"
+      }
+    );
     GetAPI.getRate(this.state.baseSymbol, this.state.targetSymbol)
       .then(response => {
       this.setState({rate: response});

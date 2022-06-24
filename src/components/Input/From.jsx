@@ -10,15 +10,18 @@ export default class From extends React.Component {
 						disabled={this.props.isDisabled}
 						onInput={this.props.onInput}
 						type="number"
-						defaultValue={0}
-						value={this.props.baseAmount}
-						id="from-amount" />
+						value={this.props.baseAmount} />
 					<select
-						defaultValue="CAD"
 						onChange={this.props.onChange}
 						id="base"
 						name="base-currency"
+						defaultValue={null}
 						onChange={this.props.onChange} >
+						<option
+							className="default-option"
+							value="CAD">
+							CAD: Canadian Dollar
+						</option>
 						{
 							// Generating symbols
 							this.props.symbols.map(symbol => {

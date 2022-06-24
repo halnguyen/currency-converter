@@ -12,14 +12,15 @@ export default class To extends Component {
 						disabled={this.props.isDisabled}
 						onInput={this.props.onInput}
 						type="number"
-						value={this.props.targetAmount}
-						defaultValue={0}/>
+						value={this.props.targetAmount} />
 					<select
-						defaultValue="USD"
-						onChange={this.props.onChange}
 						id="target"
 						name="target-currency"
+						defaultValue={"USD"}
 						onChange={this.props.onChange} >
+						<option
+							className="default-option"
+							value="USD">USD: United State of America</option>
 						{
 							// Generating symbols
 							this.props.symbols.map(symbol => {
