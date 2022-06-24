@@ -134,7 +134,6 @@ export default class App extends Component {
           symbols={this.state.symbols} />
         <TargetCurrency
           isDisabled={this.state.isDisabled}
-          onInput={this.handleChangeBaseInput}
           onInput={this.handleChangeTargetInput}
           onChange={this.handleChangeTargetSymbol}
           targetAmount={this.state.targetAmount}
