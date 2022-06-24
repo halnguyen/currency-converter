@@ -7,10 +7,12 @@ export default class From extends React.Component {
 			<div className="form-container">
 				<form action="/index.html">
 					<input
+						onInput={this.props.onInput}
 						type="number"
 						defaultValue={this.props.baseAmount}
 						id="from-amount" />
 					<select
+						defaultValue="CAD"
 						onChange={this.props.onChange}
 						id="base"
 						name="base-currency"

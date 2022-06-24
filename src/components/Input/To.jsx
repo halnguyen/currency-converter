@@ -9,9 +9,11 @@ export default class To extends Component {
 				<form action="/index.html">
 
 					<input
+						onInput={this.props.onInput}
 						type="number"
-						defaultValue={this.props.toAmount}/>
+						defaultValue={this.props.targetAmount}/>
 					<select
+						defaultValue="USD"
 						onChange={this.props.onChange}
 						id="target"
 						name="target-currency"

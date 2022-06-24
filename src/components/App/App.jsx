@@ -9,15 +9,19 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
+
     this.getSymbols = this.getSymbols.bind(this);
     this.getRate = this.getRate.bind(this);
-    this.handleChangeBase = this.handleChangeBase.bind(this);
-    this.handleChangeTarget = this.handleChangeTarget.bind(this);
+    this.handleChangeBaseSymbol = this.handleChangeBaseSymbol.bind(this);
+    this.handleChangeTargetSymbol = this.handleChangeTargetSymbol.bind(this);
+    this.handleChangeBaseInput = this.handleChangeBaseInput.bind(this);
+    this.handleChangeTargetInput = this.handleChangeTargetInput.bind(this);
+
     this.state = {
       symbols: [],
-      baseSymbol: "",
+      baseSymbol: "CAD",
       baseAmount: 0.00,
-      targetSymbol: "",
+      targetSymbol: "USD",
       targetAmount: 0.00,
       rate: undefined
     };
@@ -36,24 +40,35 @@ export default class App extends Component {
   getRate(baseSymbol, targetSymbol) {
     GetAPI.getRate(baseSymbol, targetSymbol).then(rateResponse => {
       this.setState( {rate: rateResponse} );
-      console.log(this.state.rate);
     })
   }
 
-  handleChangeBase(event) {
+  handleChangeBaseSymbol(event) {
+    // Handle change in base symbol
     const code = event.target.value;
-    this.setState( {baseSymbol: code} );
-    console.log(this.state.baseSymbol);
+    this.setState({baseSymbol: code});
   }
 
-  handleChangeTarget(event) {
+  handleChangeTargetSymbol(event) {
+    // Handle change in target symbol
     const code = event.target.value;
     this.setState( {targetSymbol: code} );
-    console.log(this.state.targetSymbol);
+  }
+
+  handleChangeBaseInput(event) {
+    this.setState({baseAmount: Number(event.target.value)});
+  }
+
+  handleChangeTargetInput(event) {
+    this.setState({targetAmount: Number(event.target.value)});
   }
 
   componentDidMount() {
     this.getSymbols();
+  }
+
+  componentDidUpdate() {
+    console.log(this.state);
   }
 
 
@@ -62,14 +77,16 @@ export default class App extends Component {
       <div className="App">
         <h1>Currency Converter</h1>
         <From
-          onChange={this.handleChangeBase}
+          onInput={this.handleChangeBaseInput}
+          onChange={this.handleChangeBaseSymbol}
           baseAmount={this.state.baseAmount}
           baseSymbol={this.state.baseSymbol}
           symbols={this.state.symbols} />
         <To
-          onChange={this.handleChangeTarget}
-          toAmount={this.state.toAmount}
-          toSymbol={this.state.baseSymbol}
+          onInput={this.handleChangeTargetInput}
+          onChange={this.handleChangeTargetSymbol}
+          targetAmount={this.state.targetAmount}
+          targetSymbol={this.state.targetSymbol}
           symbols={this.state.symbols} />
       </div>
     );

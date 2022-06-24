@@ -23,10 +23,6 @@ input {
   
 }
 
-input:focus {
-  /* border: 1px solid blue; */
-}
-
 /* Removing spinbox */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -45,4 +41,5 @@ select {
   border: 1px solid var(--accent-light);
   background-color: var(--background);
   color: white;
+  width: 100%;
 }
