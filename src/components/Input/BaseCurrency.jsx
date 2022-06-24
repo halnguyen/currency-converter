@@ -16,7 +16,6 @@ export default class BaseCurrency extends React.Component {
 						id="base"
 						name="base-currency"
 						defaultValue={null}
-						onChange={this.props.onChange} >
 						<option
 							className="default-option"
 							value="CAD">
