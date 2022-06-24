@@ -9,6 +9,7 @@ export default class To extends Component {
 				<form action="/index.html">
 
 					<input
+						disabled={this.props.isDisabled}
 						onInput={this.props.onInput}
 						type="number"
 						value={this.props.targetAmount}

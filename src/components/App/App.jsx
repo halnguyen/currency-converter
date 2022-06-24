@@ -41,28 +41,19 @@ export default class App extends Component {
     .catch(error => console.log(error));
   }
 
-  // getRate() {
-  //   const baseSymbol = this.state.baseSymbol;
-  //   const targetSymbol = this.state.targetSymbol;
-  //   if (baseSymbol && targetSymbol) {
-  //     GetAPI.getRate(baseSymbol, targetSymbol).then(rateResponse => {
-  //       this.setState( {rate: rateResponse, isDisabled: false} );
-  //     });
-  //   } else {
-  //     return;
-  //   }
-  // }
-
   // Handle events
 
   handleChangeBaseSymbol(event) {
     // Handle change in base symbol
+    // Disabling input while api is being fetched
+    this.setState({isDisabled: true});
     const newBase = event.target.value;
     const target = this.state.targetSymbol;
     GetAPI.getRate(newBase, target).then(response => {
       this.setState({
         baseSymbol: newBase,
-        rate: response
+        rate: response,
+        isDisabled: false
       });
     });
 
@@ -70,12 +61,15 @@ export default class App extends Component {
 
   handleChangeTargetSymbol(event) {
     // Handle change in target symbol
+    // Disabling input while api is being fetched
+    this.setState({isDisabled: true});
     const newTarget = event.target.value;
     const base = this.state.baseSymbol;
     GetAPI.getRate(base, newTarget).then(response => {
       this.setState({
         targetSymbol: newTarget,
-        rate: response
+        rate: response,
+        isDisabled: false
       });
     });
   }
@@ -99,6 +93,11 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getSymbols();
+    GetAPI.getRate(this.state.baseSymbol, this.state.targetSymbol)
+      .then(response => {
+      this.setState({rate: response});
+    })
+      .catch(error => console.log(error));
   }
 
   componentDidUpdate() {

@@ -1,4 +1,6 @@
 :root {
+  --disabled-light: rgb( 255 255 255 / 0.3 );
+  --disabled-dark: rgb( 0 0 0 / 0.1 );
   --background: #25404e;
   --accent-dark: #355070;
   --accent-light: #eaac8b;

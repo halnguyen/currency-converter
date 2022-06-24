@@ -35,6 +35,11 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input:disabled {
+  background-color: var(--disabled-dark);
+  color: var(--disabled-light);
+}
+
 select {
   outline: none;
   border-radius: 3px;

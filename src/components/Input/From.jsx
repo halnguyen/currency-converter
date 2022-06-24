@@ -7,6 +7,7 @@ export default class From extends React.Component {
 			<div className="form-container">
 				<form action="/index.html">
 					<input
+						disabled={this.props.isDisabled}
 						onInput={this.props.onInput}
 						type="number"
 						defaultValue={0}
