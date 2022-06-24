@@ -29,6 +29,4 @@ const GetAPI = {
   }
 };
 
-
-GetAPI.getRate('USD', 'CAD').then(resp => console.log(resp));
 export default GetAPI;

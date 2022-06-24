@@ -11,4 +11,4 @@ Objectives:
 	</li>
 </ul>
 
-View this project on <a href="https://codesandbox.io/s/currency-converter-glpqnh">CodeSandBox</a>.
+View this project on <a href="https://codesandbox.io/s/currency-converter-7vsz17">CodeSandBox</a>.
