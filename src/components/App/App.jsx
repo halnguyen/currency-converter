@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import './App.css';
-import From from '../Input/From.jsx';
-import SwapButton from '../SwapButton/SwapButton.jsx';
-import To from '../Input/To.jsx';
+import BaseCurrency from '../Input/BaseCurrency.jsx';
+import TargetCurrency from '../Input/TargetCurrency.jsx';
 import GetAPI from '../../util/api.js';
 
 export default class App extends Component {
@@ -117,6 +116,7 @@ export default class App extends Component {
   }
 
   componentDidUpdate() {
+    // debuggin
     console.log(this.state.baseSymbol, this.state.targetSymbol, this.state.rate);
   }
 
@@ -125,14 +125,14 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Currency Converter</h1>
-        <From
+        <BaseCurrency
           isDisabled={this.state.isDisabled}
           onInput={this.handleChangeBaseInput}
           onChange={this.handleChangeBaseSymbol}
           baseAmount={this.state.baseAmount}
           baseSymbol={this.state.baseSymbol}
           symbols={this.state.symbols} />
-        <To
+        <TargetCurrency
           isDisabled={this.state.isDisabled}
           onInput={this.handleChangeBaseInput}
           onInput={this.handleChangeTargetInput}
