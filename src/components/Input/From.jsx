@@ -9,7 +9,8 @@ export default class From extends React.Component {
 					<input
 						onInput={this.props.onInput}
 						type="number"
-						defaultValue={this.props.baseAmount}
+						defaultValue={0}
+						value={this.props.baseAmount}
 						id="from-amount" />
 					<select
 						defaultValue="CAD"

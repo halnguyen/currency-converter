@@ -11,7 +11,8 @@ export default class To extends Component {
 					<input
 						onInput={this.props.onInput}
 						type="number"
-						defaultValue={this.props.targetAmount}/>
+						value={this.props.targetAmount}
+						defaultValue={0}/>
 					<select
 						defaultValue="USD"
 						onChange={this.props.onChange}
