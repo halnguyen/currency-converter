@@ -1,26 +1,27 @@
-import { Component } from 'react';
+import React from 'react';
 import './Input.css';
 
-export default class To extends Component {
+export default class BaseCurrency extends React.Component {
 	render() {
 		return (
 			<div className="form-container">
-
 				<form action="/index.html">
-
 					<input
 						disabled={this.props.isDisabled}
 						onInput={this.props.onInput}
 						type="number"
-						value={this.props.targetAmount} />
+						value={this.props.baseAmount} />
 					<select
-						id="target"
-						name="target-currency"
-						defaultValue={"USD"}
+						onChange={this.props.onChange}
+						id="base"
+						name="base-currency"
+						defaultValue={null}
 						onChange={this.props.onChange} >
 						<option
 							className="default-option"
-							value="USD">USD: United State of America</option>
+							value="CAD">
+							CAD: Canadian Dollar
+						</option>
 						{
 							// Generating symbols
 							this.props.symbols.map(symbol => {
@@ -34,9 +35,7 @@ export default class To extends Component {
 							})
 						}
 					</select>
-
 				</form>
-
 			</div>
 		);
 	}
